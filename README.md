@@ -1,2 +1,2 @@
 # green-makerspace-dk.github.io
-Re-emerging website of GreenMakerspace.dk
+Re-emerging static website of GreenMakerspace.dk
