@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src chrome:" />
+    <title>Problem med indlæsning af side</title>
+    <link rel="stylesheet" href="chrome://browser/skin/aboutNetError.css" type="text/css" media="all" />
+    <!-- If the location of the favicon is changed here, the FAVICON_ERRORPAGE_URL symbol in
+         toolkit/components/places/src/nsFaviconService.h should be updated. -->
+    <link rel="icon" type="image/png" id="favicon" href="chrome://global/skin/icons/warning-16.png" />
+  </head>
+
+  <body dir="ltr" class="neterror">
+    <!-- ERROR ITEM CONTAINER (removed during loading to avoid bug 39098) -->
+    
+
+    <!-- PAGE CONTAINER (for styling purposes only) -->
+    <div id="errorPageContainer" class="container">
+      <div id="text-container">
+        <!-- Error Title -->
+        <div class="title">
+          <h1 class="title-text">Sikker forbindelse mislykkedes</h1>
+        </div>
+
+        <!-- LONG CONTENT (the section most likely to require scrolling) -->
+        <div id="errorLongContent">
+
+          <!-- Short Description -->
+          <div id="errorShortDesc">
+            <p id="errorShortDescText">Der opstod en fejl under forbindelsen til web.archive.org. 
+</p>
+          </div>
+
+          <div id="errorShortDesc2">
+              <p id="errorShortDescText2"></p>
+          </div>
+
+          <p id="badStsCertExplanation" hidden="true">Webstedet bruger HTTP
+Strict Transport Security (HSTS) til at angive at Firefox kun
+kan oprette en sikker forbindelse til det. Derfor er det ikke muligt at
+tilføje en undtagelse for dette certifikat.</p>
+
+          <div id="wrongSystemTimePanel">
+            <p> Firefox oprettede ikke forbindelse til <span id="wrongSystemTime_URL"></span>, fordi din computers ur lader til at være forkert indstillet, hvilket forhindrer, at en sikker forbindelse kan oprettes.</p> <p>Din computer er indstillet til <span id="wrongSystemTime_systemDate"></span>, men det burde være <span id="wrongSystemTime_actualDate"></span>. Indstil dato og klokkeslæt korrekt for at løse dette problem.</p>
+          </div>
+
+          <div id="wrongSystemTimeWithoutReferencePanel">
+            <p>Firefox oprettede ikke forbindelse til <span id="wrongSystemTimeWithoutReference_URL"></span> fordi din computers ur lader til at være forkert indstillet</p> <p>Din computer er indstillet til <span id="wrongSystemTimeWithoutReference_systemDate"></span>. Indstil dato og klokkeslæt korrekt for at løse dette problem.</p>
+          </div>
+
+          <!-- Long Description (Note: See netError.dtd for used XHTML tags) -->
+          <div id="errorLongDesc">
+<ul xmlns="http://www.w3.org/1999/xhtml">
+  <li>Siden kunne ikke vises, da autenticiteten af de modtagne data ikke kunne bekræftes.</li>
+  <li>Kontakt ejerne af webstedet omkring dette problem.</li>
+</ul>
+</div>
+
+          <div id="learnMoreContainer" style="display: block;">
+            <p><a href="https://support.mozilla.org/kb/what-does-your-connection-is-not-secure-mean" id="learnMoreLink" target="new">Læs mere…</a></p>
+          </div>
+        </div>
+
+        <!-- UI for option to report certificate errors to Mozilla. Removed on
+             init for other error types .-->
+        <div id="certificateErrorReporting" style="display: block;">
+          <p class="toggle-container-with-text">
+            <input type="checkbox" id="automaticallyReportInFuture" role="checkbox" />
+            <label for="automaticallyReportInFuture" id="automaticallyReportInFuture">Indberet automatisk fejl som denne for at hjælpe Mozilla med at identificere og blokere ondsindede websteder.</label>
+          </p>
+        </div>
+
+        <div id="prefChangeContainer" class="button-container">
+          <p>Det ser ud til, at dine indstillinger for netværkssikkerhed forårsager dette. Vil du gendanne til standard-indstillinger?</p>
+          <button id="prefResetButton" class="primary" autocomplete="off">Gendan indstillinger til standard</button>
+        </div>
+
+        <div id="certErrorAndCaptivePortalButtonContainer" class="button-container">
+          <button id="returnButton" class="primary" autocomplete="off">Gå tilbage</button>
+          <button id="openPortalLoginPageButton" class="primary" autocomplete="off">Åbn netværkets login-side</button>
+          <button id="advancedButton" autocomplete="off">Avanceret</button>
+          <button id="moreInformationButton" autocomplete="off">Mere information</button>
+        </div>
+      </div>
+
+      <div id="netErrorButtonContainer" class="button-container">
+        <button id="errorTryAgain" class="primary" autocomplete="off">Prøv igen</button>
+      </div>
+
+      <div id="advancedPanelContainer">
+        <div id="badCertAdvancedPanel" class="advanced-panel">
+          <p id="badCertTechnicalInfo"></p>
+          <div id="advancedPanelButtonContainer" class="button-container">
+            <button id="advancedPanelErrorTryAgain" class="primary" autocomplete="off">Prøv igen</button>
+          </div>
+          <div class="exceptionDialogButtonContainer">
+            <button id="exceptionDialogButton">Tilføj undtagelse…</button>
+          </div>
+        </div>
+
+        <div id="certificateErrorDebugInformation">
+          <button id="copyToClipboard">Kopiér tekst til udklipsholder</button>
+          <div id="certificateErrorText"></div>
+          <button id="copyToClipboard">Kopiér tekst til udklipsholder</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="application/javascript" src="chrome://browser/content/aboutNetError.js"></script>
+</html>
