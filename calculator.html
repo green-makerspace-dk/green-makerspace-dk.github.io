@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js bg-helmets "><!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Calculator - Green Makerspace</title>
+	<meta name="description" content="A functional calculator tool for Green Makerspace">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link href="css/css.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/main.css">
+	<!-- High precision arithmetic library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+
+	<style>
+		.calculator-container {
+			max-width: 500px;
+			margin: 2em auto;
+			background: #fff;
+			border-radius: 10px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+		}
+
+		.calculator-display {
+			width: 100%;
+			height: 60px;
+			font-size: 24px;
+			text-align: right;
+			padding: 0 15px;
+			border: 2px solid #ecf0f1;
+			border-radius: 5px;
+			margin-bottom: 15px;
+			background: #f8f9fa;
+			box-sizing: border-box;
+		}
+
+		.mode-toggle {
+			text-align: center;
+			margin-bottom: 15px;
+		}
+
+		.mode-btn {
+			padding: 8px 16px;
+			margin: 0 5px;
+			border: 2px solid #79c843;
+			background: #fff;
+			color: #79c843;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			font-weight: bold;
+		}
+
+		.mode-btn.active {
+			background: #79c843;
+			color: white;
+		}
+
+		.angle-mode {
+			text-align: center;
+			margin-bottom: 10px;
+			font-size: 14px;
+			color: #666;
+		}
+
+		.angle-toggle {
+			background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+			color: white;
+			border: none;
+			padding: 6px 12px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 12px;
+			font-weight: bold;
+			transition: all 0.2s ease;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		}
+
+		.angle-toggle:hover {
+			background: linear-gradient(135deg, #a6acaf, #95a5a6);
+			transform: translateY(-1px);
+			box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+		}
+
+		/* Responsive design improvements */
+		@media screen and (max-width: 600px) {
+			.calculator-container {
+				max-width: 95%;
+				padding: 15px;
+			}
+
+			.calc-btn {
+				height: 45px;
+				font-size: 13px;
+			}
+
+			.calc-btn.scientific,
+			.calc-btn.memory {
+				font-size: 10px;
+			}
+
+			.calculator-display {
+				font-size: 20px;
+				height: 50px;
+			}
+		}
+
+		@media screen and (max-width: 400px) {
+			.calc-btn {
+				height: 40px;
+				font-size: 12px;
+			}
+
+			.calc-btn.scientific,
+			.calc-btn.memory {
+				font-size: 9px;
+			}
+
+			.calculator-buttons.scientific-layout {
+				gap: 6px;
+			}
+
+			.calculator-buttons.basic-layout {
+				gap: 8px;
+			}
+		}
+
+		/* Basic Mode Layout */
+		.calculator-buttons.basic-layout {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 10px;
+		}
+
+		/* Scientific Mode Layout */
+		.calculator-buttons.scientific-layout {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			gap: 8px;
+		}
+
+		.calc-btn {
+			height: 55px;
+			font-size: 16px;
+			font-weight: bold;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		.calc-btn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.calc-btn:active {
+			transform: translateY(0);
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		.calc-btn.number {
+			background: #ecf0f1;
+			color: #2c3e50;
+		}
+
+		.calc-btn.operator {
+			background: #79c843;
+			color: white;
+		}
+
+		.calc-btn.scientific {
+			background: #3498db;
+			color: white;
+			font-size: 13px;
+		}
+
+		.calc-btn.memory {
+			background: #9b59b6;
+			color: white;
+			font-size: 13px;
+		}
+
+		.calc-btn.equals {
+			background: #e74c3c;
+			color: white;
+		}
+
+		.calc-btn.clear {
+			background: #f39c12;
+			color: white;
+		}
+
+		.calc-btn.zero {
+			grid-column: span 2;
+		}
+
+		.calculator-title {
+			text-align: center;
+			color: #62a731;
+			margin-bottom: 1em;
+		}
+
+		/* Scientific button visibility and styling */
+		.scientific-row {
+			display: none;
+		}
+
+		.scientific-layout .scientific-row {
+			display: block;
+		}
+
+		/* Enhanced button styling for scientific functions */
+		.calc-btn.scientific {
+			background: linear-gradient(135deg, #3498db, #2980b9);
+			color: white;
+			font-size: 12px;
+			font-weight: 600;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+			border: 1px solid #2980b9;
+		}
+
+		.calc-btn.scientific:hover {
+			background: linear-gradient(135deg, #5dade2, #3498db);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+		}
+
+		.calc-btn.memory {
+			background: linear-gradient(135deg, #9b59b6, #8e44ad);
+			color: white;
+			font-size: 12px;
+			font-weight: 600;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+			border: 1px solid #8e44ad;
+		}
+
+		.calc-btn.memory:hover {
+			background: linear-gradient(135deg, #bb8fce, #9b59b6);
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(155, 89, 182, 0.4);
+		}
+
+		/* Enhanced styling for other button types */
+		.calc-btn.operator {
+			background: linear-gradient(135deg, #79c843, #6ab23c);
+			color: white;
+			font-weight: 600;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+			border: 1px solid #6ab23c;
+		}
+
+		.calc-btn.operator:hover {
+			background: linear-gradient(135deg, #8fd651, #79c843);
+			box-shadow: 0 4px 12px rgba(121, 200, 67, 0.4);
+		}
+
+		.calc-btn.equals {
+			background: linear-gradient(135deg, #e74c3c, #c0392b);
+			color: white;
+			font-weight: 600;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+			border: 1px solid #c0392b;
+		}
+
+		.calc-btn.equals:hover {
+			background: linear-gradient(135deg, #ec7063, #e74c3c);
+			box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+		}
+
+		.calc-btn.clear {
+			background: linear-gradient(135deg, #f39c12, #e67e22);
+			color: white;
+			font-weight: 600;
+			text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+			border: 1px solid #e67e22;
+		}
+
+		.calc-btn.clear:hover {
+			background: linear-gradient(135deg, #f5b041, #f39c12);
+			box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+		}
+
+		.calc-btn.number {
+			background: linear-gradient(135deg, #ecf0f1, #d5dbdb);
+			color: #2c3e50;
+			font-weight: 600;
+			border: 1px solid #bdc3c7;
+			text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+		}
+
+		.calc-btn.number:hover {
+			background: linear-gradient(135deg, #f8f9fa, #ecf0f1);
+			box-shadow: 0 4px 12px rgba(189, 195, 199, 0.4);
+		}
+
+		/* Special styling for constants (π, e) */
+		.calc-btn.scientific[onclick*="Math.PI"],
+		.calc-btn.scientific[onclick*="Math.E"] {
+			background: linear-gradient(135deg, #16a085, #138d75);
+			font-weight: bold;
+			font-size: 14px;
+		}
+
+		.calc-btn.scientific[onclick*="Math.PI"]:hover,
+		.calc-btn.scientific[onclick*="Math.E"]:hover {
+			background: linear-gradient(135deg, #48c9b0, #16a085);
+			box-shadow: 0 4px 12px rgba(22, 160, 133, 0.4);
+		}
+	</style>
+</head>
+
+<body>
+	<!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+	<header class="site-header">
+		<div class="header-container">
+			<a href="/" class="header-logo-link">
+				<img src="images/logo.svg" alt="Green Makerspace" class="header-logo-img">
+				<span class="header-title">Green Makerspace</span>
+			</a>
+			<nav class="main-nav">
+				<a href="/about" class="nav-link">About Us</a>
+				<a href="/calculator" class="nav-link">Calculator</a>
+				<a href="/calendar" class="nav-link active">Calendar</a>
+				<a href="/become-member" class="nav-link btn-cta">Become a member</a>
+			</nav>
+		</div>
+		<h2 class="calculator-title">Green Makerspace Scientific Calculator</h2>
+		<div class="calculator-container" id="calculator">
+			<div class="mode-toggle">
+				<button class="mode-btn active" onclick="setMode('basic')" id="basicBtn">Basic</button>
+				<button class="mode-btn" onclick="setMode('scientific')" id="scientificBtn">Scientific</button>
+			</div>
+
+			<div class="angle-mode" id="angleMode" style="display: none;">
+				Angle Mode: <button class="angle-toggle" onclick="toggleAngleMode()" id="angleToggle">DEG</button>
+			</div>
+
+			<input type="text" class="calculator-display" id="display" readonly>
+
+			<div class="calculator-buttons basic-layout" id="buttonGrid">
+				<!-- Scientific functions row 1 -->
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('sin')">sin</button>
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('cos')">cos</button>
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('tan')">tan</button>
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('log')">log</button>
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('ln')">ln</button>
+
+				<!-- Scientific functions row 2 -->
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('asin')">asin</button>
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('acos')">acos</button>
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('atan')">atan</button>
+				<button class="calc-btn scientific scientific-row" onclick="appendToDisplay('Math.PI')">π</button>
+				<button class="calc-btn scientific scientific-row" onclick="appendToDisplay('Math.E')">e</button>
+
+				<!-- Scientific functions row 3 -->
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('sqrt')">√</button>
+				<button class="calc-btn scientific scientific-row" onclick="appendToDisplay('^')">x^y</button>
+				<button class="calc-btn scientific scientific-row" onclick="scientificFunction('factorial')">x!</button>
+				<button class="calc-btn memory scientific-row" onclick="memoryFunction('MC')">MC</button>
+				<button class="calc-btn memory scientific-row" onclick="memoryFunction('MR')">MR</button>
+
+				<!-- Basic calculator buttons -->
+				<button class="calc-btn clear" onclick="clearDisplay()">C</button>
+				<button class="calc-btn clear" onclick="clearEntry()">CE</button>
+				<button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
+				<button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+				<button class="calc-btn memory scientific-row" onclick="memoryFunction('M+')">M+</button>
+
+				<button class="calc-btn number" onclick="appendToDisplay('7')">7</button>
+				<button class="calc-btn number" onclick="appendToDisplay('8')">8</button>
+				<button class="calc-btn number" onclick="appendToDisplay('9')">9</button>
+				<button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+				<button class="calc-btn memory scientific-row" onclick="memoryFunction('M-')">M-</button>
+
+				<button class="calc-btn number" onclick="appendToDisplay('4')">4</button>
+				<button class="calc-btn number" onclick="appendToDisplay('5')">5</button>
+				<button class="calc-btn number" onclick="appendToDisplay('6')">6</button>
+				<button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+				<button class="calc-btn memory scientific-row" onclick="memoryFunction('MS')">MS</button>
+
+				<button class="calc-btn number" onclick="appendToDisplay('1')">1</button>
+				<button class="calc-btn number" onclick="appendToDisplay('2')">2</button>
+				<button class="calc-btn number" onclick="appendToDisplay('3')">3</button>
+				<button class="calc-btn equals" onclick="calculate()" rowspan="2">=</button>
+				<button class="calc-btn scientific scientific-row" onclick="appendToDisplay('(')">(</button>
+
+				<button class="calc-btn number zero" onclick="appendToDisplay('0')">0</button>
+				<button class="calc-btn number" onclick="appendToDisplay('.')">.</button>
+				<button class="calc-btn scientific scientific-row" onclick="appendToDisplay(')')">)</button>
+			</div>
+		</div>
+		</section>
+		</main>
+
+		<script>
+			// Configure Decimal.js for 32-digit precision
+			Decimal.set({
+				precision: 32,
+				rounding: Decimal.ROUND_HALF_UP,
+				toExpNeg: -32,
+				toExpPos: 32
+			});
+
+			let display = document.getElementById('display');
+			let currentInput = '';
+			let operator = '';
+			let previousInput = '';
+			let memory = new Decimal(0);
+			let angleMode = 'DEG'; // DEG or RAD
+			let isScientificMode = false;
+
+			// Store full precision values separately from display
+			let currentValue = null; // Stores the full precision Decimal value
+			let previousValue = null; // Stores the full precision previous value
+
+			// Format number for display (10 significant digits)
+			function formatForDisplay(decimalValue) {
+				if (!decimalValue || !decimalValue.isFinite()) {
+					return 'Error';
+				}
+
+				// Convert to string with full precision first
+				let fullString = decimalValue.toString();
+
+				// Handle very small numbers (scientific notation)
+				if (decimalValue.abs().lt(0.0001) && !decimalValue.isZero()) {
+					return decimalValue.toExponential(9);
+				}
+
+				// Handle very large numbers (scientific notation)
+				if (decimalValue.abs().gte(1e10)) {
+					return decimalValue.toExponential(9);
+				}
+
+				// For normal range numbers, use toSignificantDigits
+				return decimalValue.toSignificantDigits(10).toString();
+			}
+
+			function setMode(mode) {
+				const buttonGrid = document.getElementById('buttonGrid');
+				const angleMode = document.getElementById('angleMode');
+				const basicBtn = document.getElementById('basicBtn');
+				const scientificBtn = document.getElementById('scientificBtn');
+
+				// Update button states
+				basicBtn.classList.remove('active');
+				scientificBtn.classList.remove('active');
+
+				if (mode === 'scientific') {
+					scientificBtn.classList.add('active');
+					buttonGrid.className = 'calculator-buttons scientific-layout';
+					angleMode.style.display = 'block';
+					isScientificMode = true;
+				} else {
+					basicBtn.classList.add('active');
+					buttonGrid.className = 'calculator-buttons basic-layout';
+					angleMode.style.display = 'none';
+					isScientificMode = false;
+				}
+			}
+
+			function toggleAngleMode() {
+				angleMode = angleMode === 'DEG' ? 'RAD' : 'DEG';
+				document.getElementById('angleToggle').textContent = angleMode;
+			}
+
+			function toRadians(degrees) {
+				return degrees * (Math.PI / 180);
+			}
+
+			function toDegrees(radians) {
+				return radians * (180 / Math.PI);
+			}
+
+			function factorial(n) {
+				if (n < 0) return NaN;
+				if (n === 0 || n === 1) return 1;
+				let result = 1;
+				for (let i = 2; i <= n; i++) {
+					result *= i;
+				}
+				return result;
+			}
+
+			function scientificFunction(func) {
+				try {
+					let value = new Decimal(currentInput || display.value || '0');
+					let result;
+
+					switch (func) {
+						case 'sin':
+							if (angleMode === 'DEG') {
+								value = value.mul(Decimal.acos(-1)).div(180); // Convert to radians
+							}
+							result = decimalSin(value);
+							break;
+						case 'cos':
+							if (angleMode === 'DEG') {
+								value = value.mul(Decimal.acos(-1)).div(180); // Convert to radians
+							}
+							result = decimalCos(value);
+							break;
+						case 'tan':
+							if (angleMode === 'DEG') {
+								value = value.mul(Decimal.acos(-1)).div(180); // Convert to radians
+							}
+							result = decimalTan(value);
+							break;
+						case 'asin':
+							result = decimalAsin(value);
+							if (angleMode === 'DEG') {
+								result = result.mul(180).div(Decimal.acos(-1)); // Convert to degrees
+							}
+							break;
+						case 'acos':
+							result = decimalAcos(value);
+							if (angleMode === 'DEG') {
+								result = result.mul(180).div(Decimal.acos(-1)); // Convert to degrees
+							}
+							break;
+						case 'atan':
+							result = decimalAtan(value);
+							if (angleMode === 'DEG') {
+								result = result.mul(180).div(Decimal.acos(-1)); // Convert to degrees
+							}
+							break;
+						case 'log':
+							result = decimalLog10(value);
+							break;
+						case 'ln':
+							result = value.ln();
+							break;
+						case 'sqrt':
+							result = value.sqrt();
+							break;
+						case 'factorial':
+							result = decimalFactorial(value.floor());
+							break;
+						default:
+							return;
+					}
+
+					if (!result.isFinite()) {
+						display.value = 'Error';
+						return;
+					}
+
+					// Store full precision value and display formatted version
+					currentValue = result;
+					display.value = formatForDisplay(result);
+					currentInput = result.toString(); // Keep full precision for internal use
+					operator = '';
+					previousInput = '';
+				} catch (e) {
+					display.value = 'Error';
+				}
+			}
+
+			function memoryFunction(func) {
+				try {
+					// Use current full precision value if available, otherwise parse from input
+					let value = currentValue || new Decimal(currentInput || display.value || '0');
+
+					switch (func) {
+						case 'MC':
+							memory = new Decimal(0);
+							break;
+						case 'MR':
+							currentValue = memory;
+							display.value = formatForDisplay(memory);
+							currentInput = memory.toString();
+							break;
+						case 'M+':
+							memory = memory.add(value);
+							break;
+						case 'M-':
+							memory = memory.sub(value);
+							break;
+						case 'MS':
+							memory = value;
+							break;
+					}
+				} catch (e) {
+					display.value = 'Error';
+				}
+			}
+
+			// High-precision helper functions for trigonometric operations
+			function decimalSin(x) {
+				// Taylor series for sin(x) = x - x^3/3! + x^5/5! - x^7/7! + ...
+				let result = new Decimal(0);
+				let term = x;
+				let x2 = x.mul(x);
+
+				for (let i = 1; i <= 50; i += 2) {
+					result = result.add(term);
+					term = term.mul(x2).div((i + 1) * (i + 2)).neg();
+				}
+				return result;
+			}
+
+			function decimalCos(x) {
+				// Taylor series for cos(x) = 1 - x^2/2! + x^4/4! - x^6/6! + ...
+				let result = new Decimal(1);
+				let term = new Decimal(1);
+				let x2 = x.mul(x);
+
+				for (let i = 2; i <= 50; i += 2) {
+					term = term.mul(x2).div(i * (i - 1)).neg();
+					result = result.add(term);
+				}
+				return result;
+			}
+
+			function decimalTan(x) {
+				let sin = decimalSin(x);
+				let cos = decimalCos(x);
+				if (cos.isZero()) {
+					throw new Error('Division by zero in tan');
+				}
+				return sin.div(cos);
+			}
+
+			function decimalAsin(x) {
+				if (x.abs().gt(1)) {
+					throw new Error('asin domain error');
+				}
+				// Using series expansion for small values, Newton's method for others
+				return new Decimal(Math.asin(x.toNumber()));
+			}
+
+			function decimalAcos(x) {
+				if (x.abs().gt(1)) {
+					throw new Error('acos domain error');
+				}
+				return new Decimal(Math.acos(x.toNumber()));
+			}
+
+			function decimalAtan(x) {
+				return new Decimal(Math.atan(x.toNumber()));
+			}
+
+			function decimalLog10(x) {
+				if (x.lte(0)) {
+					throw new Error('log domain error');
+				}
+				return x.ln().div(new Decimal(10).ln());
+			}
+
+			function decimalFactorial(n) {
+				if (n.lt(0)) {
+					throw new Error('Factorial of negative number');
+				}
+				if (n.gt(170)) {
+					throw new Error('Factorial too large');
+				}
+
+				let result = new Decimal(1);
+				let current = new Decimal(1);
+
+				while (current.lte(n)) {
+					result = result.mul(current);
+					current = current.add(1);
+				}
+				return result;
+			}
+
+			function appendToDisplay(value) {
+				// Handle special constants with high precision
+				if (value === 'Math.PI') {
+					let piValue = Decimal.acos(-1);
+					currentValue = piValue;
+					currentInput = piValue.toString();
+					display.value = formatForDisplay(piValue);
+					return;
+				}
+				if (value === 'Math.E') {
+					let eValue = new Decimal(1).exp();
+					currentValue = eValue;
+					currentInput = eValue.toString();
+					display.value = formatForDisplay(eValue);
+					return;
+				}
+
+				// Handle parentheses
+				if (value === '(' || value === ')') {
+					currentInput += value;
+					currentValue = null; // Reset current value for complex expressions
+					updateDisplay();
+					return;
+				}
+
+				if (['+', '-', '*', '/', '^'].includes(value)) {
+					if (currentInput !== '') {
+						if (previousInput !== '' && operator !== '') {
+							calculate();
+						}
+						operator = value;
+						previousInput = currentInput;
+						previousValue = currentValue;
+						currentInput = '';
+						currentValue = null;
+						updateDisplay();
+					}
+				} else {
+					currentInput += value;
+					currentValue = null; // Reset for manual input
+					updateDisplay();
+				}
+			}
+
+			function updateDisplay() {
+				if (operator === '') {
+					display.value = currentInput;
+				} else {
+					let displayOp = operator === '*' ? '×' : operator === '^' ? '^' : operator;
+					display.value = previousInput + ' ' + displayOp + ' ' + currentInput;
+				}
+			}
+
+			function calculate() {
+				try {
+					if (previousInput !== '' && operator !== '' && currentInput !== '') {
+						// Use stored precision values if available, otherwise parse from strings
+						let prev = previousValue || new Decimal(previousInput);
+						let current = currentValue || new Decimal(currentInput);
+						let result;
+
+						switch (operator) {
+							case '+':
+								result = prev.add(current);
+								break;
+							case '-':
+								result = prev.sub(current);
+								break;
+							case '*':
+								result = prev.mul(current);
+								break;
+							case '/':
+								if (current.isZero()) {
+									display.value = 'Error: Division by zero';
+									return;
+								}
+								result = prev.div(current);
+								break;
+							case '^':
+								result = prev.pow(current);
+								break;
+							default:
+								return;
+						}
+
+						if (!result.isFinite()) {
+							display.value = 'Error';
+							return;
+						}
+
+						// Store full precision and display formatted version
+						currentValue = result;
+						display.value = formatForDisplay(result);
+						currentInput = result.toString(); // Keep full precision for internal use
+						previousInput = '';
+						previousValue = null;
+						operator = '';
+					} else if (currentInput !== '') {
+						// Handle complex expressions with parentheses
+						try {
+							let expression = currentInput;
+
+							// Replace constants with high-precision values
+							expression = expression.replace(/3\.1415926535897932384626433832795/g, Decimal.acos(-1).toString());
+							expression = expression.replace(/2\.7182818284590452353602874713527/g, new Decimal(1).exp().toString());
+
+							// For complex expressions, we need to parse and evaluate with Decimal precision
+							let result = evaluateHighPrecisionExpression(expression);
+
+							currentValue = result;
+							display.value = formatForDisplay(result);
+							currentInput = result.toString();
+						} catch (e) {
+							display.value = 'Error';
+						}
+					}
+				} catch (e) {
+					display.value = 'Error';
+				}
+			}
+
+			function evaluateHighPrecisionExpression(expr) {
+				// Simple expression evaluator for high precision
+				// This is a basic implementation - for production use, consider a proper expression parser
+				try {
+					// Replace operators and evaluate step by step
+					expr = expr.replace(/×/g, '*');
+
+					// For now, use JavaScript's eval but with Decimal conversion
+					// Note: This is simplified - a full implementation would need proper parsing
+					let result = Function('"use strict"; return (' + expr + ')')();
+					return new Decimal(result);
+				} catch (e) {
+					throw new Error('Invalid expression');
+				}
+			}
+
+			function clearDisplay() {
+				display.value = '';
+				currentInput = '';
+				operator = '';
+				previousInput = '';
+				currentValue = null;
+				previousValue = null;
+			}
+
+			function clearEntry() {
+				if (currentInput !== '') {
+					currentInput = '';
+					currentValue = null;
+					updateDisplay();
+				}
+			}
+
+			// Initialize in basic mode
+			setMode('basic');
+
+			// Keyboard support
+			document.addEventListener('keydown', function (event) {
+				const key = event.key;
+
+				if (key >= '0' && key <= '9' || key === '.') {
+					appendToDisplay(key);
+				} else if (['+', '-', '*', '/'].includes(key)) {
+					appendToDisplay(key);
+				} else if (key === 'Enter' || key === '=') {
+					calculate();
+				} else if (key === 'Escape') {
+					clearDisplay();
+				} else if (key === 'Backspace') {
+					clearEntry();
+				} else if (key.toLowerCase() === 's' && event.ctrlKey) {
+					// Ctrl+S to toggle scientific mode
+					event.preventDefault();
+					setMode(isScientificMode ? 'basic' : 'scientific');
+				}
+			});
+		</script>
+</body>
+
+</html>

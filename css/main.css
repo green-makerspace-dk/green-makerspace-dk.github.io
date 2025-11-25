@@ -286,91 +286,118 @@ tr.expired td:first-child {
   color: #2a3139;
   border-bottom: 1px solid #6c7d90; }
 
-.header {
-  background-color: #ecf0f1;
-  height: 72px;
-  box-shadow: 0px 0 4px #111;
-  text-align: center;
-  position: relative; }
+/* New Header Styles */
+.site-header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0;
+    border-top: 4px solid #79c843; /* Keeping the green border accent */
+}
 
-.header-border {
-  height: 1px;
-  background-color: #79c843;
-  position: relative;
-  z-index: 10; }
+.header-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
 
-.header-nav {
-  width: 12em;
-  padding-bottom: 0.1em;
-  display: inline-block;
-  vertical-align: 26px;
-  text-align: left;
-  margin: 0 2em; }
+.header-logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    gap: 15px;
+}
 
-.header-name {
-  display: block;
-  position: absolute;
-  height: 40px;
-  top: 14px;
-  left: 2em;
-  opacity: 0.8; }
+.header-logo-img {
+    height: 60px;
+    width: auto;
+}
 
-.header-nav-link {
-  display: inline-block;
-  text-transform: uppercase;
-  color: #566473;
-  text-decoration: none;
-  font-weight: 500;
-  letter-spacing: 1px;
-  font-size: 0.95em;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  transition: color, 0.2s; }
+.header-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-.header-nav-link:hover {
-  color: #8997a6; }
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
 
-.header-nav-link:after {
-  content: "";
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  -o-transform: translateY(0);
-  transform: translateY(0);
-  -webkit-transition: -webkit-transform 0.2s, background 0.2s;
-  -moz-transition: -moz-transform 0.2s, background 0.2s;
-  transition: transform 0.2s, background 0.2s;
-  display: block;
-  height: 1px;
-  cursor: pointer;
-  background: #e0e4e8;
-  width: calc(100% + 10px);
-  margin-left: -5px; }
+.nav-link {
+    text-decoration: none;
+    color: #566473;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    position: relative;
+}
 
-.header-nav-link:hover:after {
-  -webkit-transform: translateY(-0.7em);
-  -moz-transform: translateY(-0.7em);
-  -ms-transform: translateY(-0.7em);
-  -o-transform: translateY(-0.7em);
-  transform: translateY(-0.7em);
-  background: rgba(136, 151, 166, 0.7); }
+.nav-link:not(.btn-cta):after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #79c843;
+    transition: width 0.3s;
+}
 
-.header-nav-link:active:after {
-  background: none; }
+.nav-link:not(.btn-cta):hover:after {
+    width: 100%;
+}
 
-.header-logo {
-  text-decoration: none;
-  top: -10px;
-  width: 130px;
-  text-align: center;
-  height: 130px;
-  display: inline-block;
-  background-color: #ecf0f1;
-  text-indent: -6px;
-  box-shadow: -7px -16px 0px 1px #ecf0f1, 7px -16px 0px 1px #ecf0f1, 0 0px 4px #111;
-  margin-top: -10px;
-  border-radius: 50%;
-  padding-top: 24px; }
+.nav-link:hover {
+    color: #2c3e50;
+}
+
+.btn-cta {
+    background-color: #79c843;
+    color: white !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(121, 200, 67, 0.3);
+}
+
+.btn-cta:hover {
+    background-color: #6ebb37;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(121, 200, 67, 0.4);
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 1rem;
+        height: auto;
+        flex-direction: column;
+        padding-bottom: 1rem;
+    }
+    
+    .header-logo-link {
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .main-nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 
 .calendar-open, .calendar-closed {
   text-align: center;

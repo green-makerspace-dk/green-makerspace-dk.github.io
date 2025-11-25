@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js bg-grid "><!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Calendar - Green Makerspace</title>
+    <meta name="description" content="Green Makerspace Calendar of Events">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="css/css.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+		<![endif]-->
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="header-logo-link">
+                <img src="images/logo.svg" alt="Green Makerspace" class="header-logo-img">
+                <span class="header-title">Green Makerspace</span>
+            </a>
+            <nav class="main-nav">
+                <a href="/about" class="nav-link">About Us</a>
+                <a href="/calculator" class="nav-link">Calculator</a>
+                <a href="/calendar" class="nav-link active">Calendar</a>
+                <a href="/become-member" class="nav-link btn-cta">Become a member</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="frame">
+        <section class="calendar-page frame">
+            <div class="calendar-header">
+                <h2 id="currentMonth">November 2025</h2>
+                <div class="calendar-controls">
+                    <button id="prevMonth" class="btn-nav">&lt;</button>
+                    <button id="nextMonth" class="btn-nav">&gt;</button>
+                    <button id="addEventBtn" class="button-green">Add Activity</button>
+                </div>
+            </div>
+
+            <div class="calendar-grid-header">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div id="calendarGrid" class="calendar-grid">
+                <!-- Calendar days will be generated here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Add New Activity</h3>
+            <form id="addEventForm">
+                <label for="eventTitle">Title</label>
+                <input type="text" id="eventTitle" name="title" required>
+
+                <label for="eventDate">Date</label>
+                <input type="date" id="eventDate" name="date" required>
+
+                <div class="time-inputs">
+                    <div>
+                        <label for="eventStart">Start Time</label>
+                        <input type="time" id="eventStart" name="start" required>
+                    </div>
+                    <div>
+                        <label for="eventEnd">End Time</label>
+                        <input type="time" id="eventEnd" name="end" required>
+                    </div>
+                </div>
+
+                <label for="eventType">Type</label>
+                <select id="eventType" name="type">
+                    <option value="workshop">Workshop</option>
+                    <option value="meetup">Meetup</option>
+                    <option value="course">Course</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="eventDesc">Description</label>
+                <textarea id="eventDesc" name="description" rows="3"></textarea>
+
+                <button type="submit" class="button-green">Save Activity</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/vendor/jquery-3.7.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/calendar.js"></script>
+</body>
+
+</html>
