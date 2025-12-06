@@ -1,0 +1,26 @@
+{
+  "name": "green-makerspace-gallery",
+  "version": "1.0.0",
+  "description": "Green Makerspace website with automated gallery system",
+  "main": "index.html",
+  "scripts": {
+    "update-gallery": "node .github/scripts/update-gallery.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/green-makerspace-dk/green-makerspace-dk.github.io.git"
+  },
+  "keywords": [
+    "makerspace",
+    "gallery",
+    "automation",
+    "github-actions"
+  ],
+  "author": "Green Makerspace",
+  "license": "MIT",
+  "devDependencies": {
+    "fs-extra": "^11.3.2",
+    "sharp": "^0.32.6"
+  }
+}

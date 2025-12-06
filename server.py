@@ -71,6 +71,6 @@ class CleanURLHandler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     server = HTTPServer(("0.0.0.0", 8000), CleanURLHandler)
-    print("Serving on http://localhost:8000")
+    print("Serving on http://0.0.0.0:8000")
     server.serve_forever()
 
