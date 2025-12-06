@@ -18,6 +18,34 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
 
 	<style>
+		.language-selector {
+			display: flex;
+			gap: 5px;
+			align-items: center;
+			margin-left: 15px;
+		}
+		.lang-btn {
+			background: none;
+			border: 2px solid transparent;
+			border-radius: 4px;
+			padding: 4px 6px;
+			font-size: 18px;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			text-decoration: none;
+		}
+		.lang-btn:hover {
+			border-color: #4CAF50;
+			transform: scale(1.1);
+		}
+		.lang-btn.active {
+			border-color: #4CAF50;
+			background-color: rgba(76, 175, 80, 0.1);
+		}
+		.main-nav {
+			display: flex;
+			align-items: center;
+		}
 		.calculator-container {
 			max-width: 500px;
 			margin: 2em auto;
@@ -328,21 +356,26 @@
 				<span class="header-title">Green Makerspace</span>
 			</a>
 			<nav class="main-nav">
-				<a href="/about" class="nav-link">About Us</a>
-				<a href="/calculator" class="nav-link active">Calculator</a>
-				<a href="/gallery" class="nav-link">Gallery</a>
-				<a href="/become-member" class="nav-link btn-cta">Become a member</a>
+				<a href="/about" class="nav-link" data-i18n="nav.about">About Us</a>
+				<a href="/calculator" class="nav-link active" data-i18n="nav.calculator">Calculator</a>
+				<a href="/gallery" class="nav-link" data-i18n="nav.gallery">Gallery</a>
+				<a href="/become-member" class="nav-link btn-cta" data-i18n="nav.become_member">Become a member</a>
+				<div class="language-selector">
+					<button class="lang-btn" data-lang="en" onclick="changeLanguage('en')" title="English">🇬🇧</button>
+					<button class="lang-btn" data-lang="da" onclick="changeLanguage('da')" title="Dansk">🇩🇰</button>
+					<button class="lang-btn" data-lang="de" onclick="changeLanguage('de')" title="Deutsch">🇩🇪</button>
+				</div>
 			</nav>
 		</div>
-		<h2 class="calculator-title">Green Makerspace Scientific Calculator</h2>
+		<h2 class="calculator-title" data-i18n="calculator.title">Green Makerspace Scientific Calculator</h2>
 		<div class="calculator-container" id="calculator">
 			<div class="mode-toggle">
-				<button class="mode-btn active" onclick="setMode('basic')" id="basicBtn">Basic</button>
-				<button class="mode-btn" onclick="setMode('scientific')" id="scientificBtn">Scientific</button>
+				<button class="mode-btn active" onclick="setMode('basic')" id="basicBtn" data-i18n="calculator.basic">Basic</button>
+				<button class="mode-btn" onclick="setMode('scientific')" id="scientificBtn" data-i18n="calculator.scientific">Scientific</button>
 			</div>
 
 			<div class="angle-mode" id="angleMode" style="display: none;">
-				Angle Mode: <button class="angle-toggle" onclick="toggleAngleMode()" id="angleToggle">DEG</button>
+				<span data-i18n="calculator.angle_mode">Angle Mode</span>: <button class="angle-toggle" onclick="toggleAngleMode()" id="angleToggle">DEG</button>
 			</div>
 
 			<input type="text" class="calculator-display" id="display" readonly>
@@ -853,6 +886,7 @@
 				}
 			});
 		</script>
+	<script src="js/i18n.js"></script>
 </body>
 
 </html>

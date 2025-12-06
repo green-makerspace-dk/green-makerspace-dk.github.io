@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "about": "Om Os",
+    "calculator": "Lommeregner",
+    "gallery": "Galleri",
+    "become_member": "Bliv medlem"
+  },
+  "home": {
+    "title": "Green Makerspace",
+    "subtitle": "Værkstedet for alle der vil komme og lave ting.",
+    "description1": "Vi er stedet hvor du, som opfinder, iværksætter, hobbyist eller studerende kan komme og arbejde på projekter der er sjove, grønne og innovative.",
+    "description2": "På Green Makerspace kan du materialisere dine ideer og lære i et inspirerende miljø med mange forskellige fagfolk og kreative.",
+    "calendar_header": "Vi har åbent",
+    "calendar_next": "næste lørdag",
+    "calendar_from": "fra",
+    "calendar_to": "til",
+    "calendar_info": "Normalt åbent hver lørdag 10:00-14:00<br/>og tirsdag 18:00-21:00"
+  },
+  "about": {
+    "title": "Om Os",
+    "emergence_title": "Hvordan opstod Green Makerspace?",
+    "emergence_p1": "I begyndelsen af 2013 søgte den frivillige organisation Vedvarende Energi i Sønderborg Miljøministeriet om finansiering til at Grønne Entusiaster kunne oprette et værksted. Ansøgningen blev godkendt og nødvendig finansiering blev stillet til rådighed for at etablere:",
+    "emergence_quote": "Det eksperimentelle og inspirerende Klima- og Miljøværksted",
+    "emergence_p2": "Den lokale iværksætterfabrik iFabrikken viste sig at være det ideelle sted til at rumme værkstedet. For at gavne sine lokale medlemmer og forbedre miljøet for forskellige fagfolk i Sønderborg, sluttede IDA Sønderjylland (Ingeniørforeningen) sig til for at støtte.",
+    "emergence_p3": "Næste skridt var grundlæggelsen af Green Makerspace Support Foreningen, hvor frivillige arbejder på vedligeholdelse, udvikling og bæredygtighed af Green Makerspace værkstedet.",
+    "emergence_p4": "Green Makerspace har haft fornøjelsen af at have mange forskellige sponsorer og frivillige med hensyn til tid, materialer og udstyr. Vi er stolte og taknemmelige for al støtten og vi forudser en grøn fremtid.",
+    "supported_by": "Støttet af",
+    "projects_title": "Projekter som har fundet sted:",
+    "project1": "Eksperimenter med elektronikaffald – hvordan man laver en lille energihøster til LED-lamper",
+    "project2": "Green-Power-Hack - Hvordan man laver en gammel elektrisk boremaskine til en kraftfuld energihøster for at få strøm til andre trådløse projekter",
+    "project3": "Få din gamle golfbil på vejen igen – reparer den grønt så den holder lidt længere",
+    "project4": "Op-cykle affald til nye kunstneriske ting",
+    "project4_sub1": "Vandflasker til vidunderlige møbler",
+    "project4_sub2": "Vandflasker til sol varmluft-varmere til tørretumblere",
+    "project4_sub3": "Ølkasser til sol-varmtvands-varmere til badevand"
+  },
+  "calculator": {
+    "title": "Green Makerspace Videnskabelig Lommeregner",
+    "basic": "Grundlæggende",
+    "scientific": "Videnskabelig",
+    "angle_mode": "Vinkel Tilstand"
+  },
+  "gallery": {
+    "title": "Projekt Galleri",
+    "description": "Udforsk vores samling af innovative projekter, workshops og kreative bestræbelser fra Green Makerspace fællesskabet. Fra bæredygtig teknologi til kunstneriske kreationer, se hvad vores makere har bygget.",
+    "loading": "Indlæser galleri billeder...",
+    "no_images_title": "Galleri Kommer Snart!",
+    "no_images_text": "Vi er i gang med at opsætte vores projekt galleri. Kom tilbage snart for at se fantastiske projekter fra vores Green Makerspace fællesskab.",
+    "admin_info": "For administratorer: Tilføj billeder til /gallery/ mappen for automatisk at udfylde dette galleri. Understøttede formater: JPG, PNG, GIF, WebP"
+  },
+  "become_member": {
+    "title": "Bliv medlem og få adgang til Makerspace"
+  }
+}

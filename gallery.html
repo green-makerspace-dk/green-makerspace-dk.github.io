@@ -18,6 +18,34 @@
 			<script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
 		<![endif]-->
 		<style>
+			.language-selector {
+				display: flex;
+				gap: 5px;
+				align-items: center;
+				margin-left: 15px;
+			}
+			.lang-btn {
+				background: none;
+				border: 2px solid transparent;
+				border-radius: 4px;
+				padding: 4px 6px;
+				font-size: 18px;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				text-decoration: none;
+			}
+			.lang-btn:hover {
+				border-color: #4CAF50;
+				transform: scale(1.1);
+			}
+			.lang-btn.active {
+				border-color: #4CAF50;
+				background-color: rgba(76, 175, 80, 0.1);
+			}
+			.main-nav {
+				display: flex;
+				align-items: center;
+			}
 			.gallery-container {
 				max-width: 1200px;
 				margin: 0 auto;
@@ -263,40 +291,45 @@
 					<img src="images/logo.svg" alt="Green Makerspace" class="header-logo-img">
 					<span class="header-title">Green Makerspace</span>
 				</a>
-				<nav class="main-nav">
-					<a href="/about" class="nav-link">About Us</a>
-					<a href="/calculator" class="nav-link">Calculator</a>
-					<a href="/gallery" class="nav-link active">Gallery</a>
-					<a href="/become-member" class="nav-link btn-cta">Become a member</a>
-				</nav>
+			<nav class="main-nav">
+				<a href="/about" class="nav-link" data-i18n="nav.about">About Us</a>
+				<a href="/calculator" class="nav-link" data-i18n="nav.calculator">Calculator</a>
+				<a href="/gallery" class="nav-link active" data-i18n="nav.gallery">Gallery</a>
+				<a href="/become-member" class="nav-link btn-cta" data-i18n="nav.become_member">Become a member</a>
+				<div class="language-selector">
+					<button class="lang-btn" data-lang="en" onclick="changeLanguage('en')" title="English">🇬🇧</button>
+					<button class="lang-btn" data-lang="da" onclick="changeLanguage('da')" title="Dansk">🇩🇰</button>
+					<button class="lang-btn" data-lang="de" onclick="changeLanguage('de')" title="Deutsch">🇩🇪</button>
+				</div>
+			</nav>
 			</div>
 		</header>
 
 		<main class="frame">
 			<div class="gallery-container">
-				<h1 class="gallery-title">Project Gallery</h1>
-				<p class="gallery-description">
-					Explore our collection of innovative projects, workshops, and creative endeavors 
-					from the Green Makerspace community. From sustainable technology to artistic creations, 
-					see what our makers have been building.
-				</p>
+			<h1 class="gallery-title" data-i18n="gallery.title">Project Gallery</h1>
+			<p class="gallery-description" data-i18n="gallery.description">
+				Explore our collection of innovative projects, workshops, and creative endeavors 
+				from the Green Makerspace community. From sustainable technology to artistic creations, 
+				see what our makers have been building.
+			</p>
 				
-				<div id="loading-message" class="loading-message">
-					Loading gallery images...
-				</div>
+			<div id="loading-message" class="loading-message" data-i18n="gallery.loading">
+				Loading gallery images...
+			</div>
 				
 				<div id="gallery-grid" class="gallery-grid" style="display: none;">
 					<!-- Gallery items will be dynamically loaded here -->
 				</div>
 				
-				<div id="no-images" class="no-images-message" style="display: none;">
-					<h3>Gallery Coming Soon!</h3>
-					<p>We're currently setting up our project gallery. Check back soon to see amazing projects from our Green Makerspace community.</p>
-					<div class="upload-info">
-						<strong>For administrators:</strong> Add images to the <code>/gallery/</code> folder to populate this gallery automatically.
-						Supported formats: JPG, PNG, GIF, WebP
-					</div>
+			<div id="no-images" class="no-images-message" style="display: none;">
+				<h3 data-i18n="gallery.no_images_title">Gallery Coming Soon!</h3>
+				<p data-i18n="gallery.no_images_text">We're currently setting up our project gallery. Check back soon to see amazing projects from our Green Makerspace community.</p>
+				<div class="upload-info" data-i18n="gallery.admin_info">
+					<strong>For administrators:</strong> Add images to the <code>/gallery/</code> folder to populate this gallery automatically.
+					Supported formats: JPG, PNG, GIF, WebP
 				</div>
+			</div>
 			</div>
 		</main>
 
@@ -451,5 +484,6 @@
 			// Load gallery on page load
 			document.addEventListener('DOMContentLoaded', loadGalleryImages);
 		</script>
+		<script src="js/i18n.js"></script>
 	</body>
 </html>

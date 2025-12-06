@@ -14,6 +14,36 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link href="css/css.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/main.css">
+	<style>
+		.language-selector {
+			display: flex;
+			gap: 5px;
+			align-items: center;
+			margin-left: 15px;
+		}
+		.lang-btn {
+			background: none;
+			border: 2px solid transparent;
+			border-radius: 4px;
+			padding: 4px 6px;
+			font-size: 18px;
+			cursor: pointer;
+			transition: all 0.2s ease;
+			text-decoration: none;
+		}
+		.lang-btn:hover {
+			border-color: #4CAF50;
+			transform: scale(1.1);
+		}
+		.lang-btn.active {
+			border-color: #4CAF50;
+			background-color: rgba(76, 175, 80, 0.1);
+		}
+		.main-nav {
+			display: flex;
+			align-items: center;
+		}
+	</style>
 
 </head>
 
@@ -28,10 +58,15 @@
 				<span class="header-title">Green Makerspace</span>
 			</a>
 			<nav class="main-nav">
-				<a href="/about" class="nav-link">About Us</a>
-				<a href="/calculator" class="nav-link">Calculator</a>
-				<a href="/gallery" class="nav-link">Gallery</a>
-				<a href="/become-member" class="nav-link btn-cta">Become a member</a>
+				<a href="/about" class="nav-link" data-i18n="nav.about">About Us</a>
+				<a href="/calculator" class="nav-link" data-i18n="nav.calculator">Calculator</a>
+				<a href="/gallery" class="nav-link" data-i18n="nav.gallery">Gallery</a>
+				<a href="/become-member" class="nav-link btn-cta" data-i18n="nav.become_member">Become a member</a>
+				<div class="language-selector">
+					<button class="lang-btn" data-lang="en" onclick="changeLanguage('en')" title="English">🇬🇧</button>
+					<button class="lang-btn" data-lang="da" onclick="changeLanguage('da')" title="Dansk">🇩🇰</button>
+					<button class="lang-btn" data-lang="de" onclick="changeLanguage('de')" title="Deutsch">🇩🇪</button>
+				</div>
 			</nav>
 		</div>
 	</header>
@@ -39,30 +74,30 @@
 	<main class="frame">
 		<section class="about-page frame">
 			<article class="one-half">
-				<h2>How did the Green Makerspace emerge?</h2>
-				<p>
+				<h2 data-i18n="about.emergence_title">How did the Green Makerspace emerge?</h2>
+				<p data-i18n="about.emergence_p1">
 					In early 2013 the voluntary organization <em>Vedvarende Energi in Sønderborg</em>
 					applied to Ministry of the Environment for funding for Green Enthusiasts to
 					create a workshop. The application was approved and necessary funding provided for
 					setting up:
 				</p>
-				<blockquote>
+				<blockquote data-i18n="about.emergence_quote">
 					The experimental and inspiring Climate and Environment Workshop
 				</blockquote>
 				<p></p>
-				<p>
+				<p data-i18n="about.emergence_p2">
 					Local entrepreneur factory iFabrikken emerged as the ideal
 					location to accommodate the workshop. In order to benefit its local
 					members and improve the environment for various professionals in
 					Sønderborg, IDA Sønderjylland (The Danish Society of Engineers) joined
 					to support.
 				</p>
-				<p>
+				<p data-i18n="about.emergence_p3">
 					The next step was the foundation of the Green Makerspace
 					Support Association, where volunteers work on the maintenance,
 					development and sustainability of the Green Makerspace workshop.
 				</p>
-				<p>
+				<p data-i18n="about.emergence_p4">
 					Green Makerspace has had the pleasure to have many different
 					sponsors and volunteers in terms of time, materials and equipment. We
 					are proud and grateful for all the support and we foresee a green future.
@@ -75,7 +110,7 @@
 					<br />
 					<a href="http://www.ve.dk/als"><small>www.ve.dk/als</small></a>
 -->
-				<h4>Supported by</h4>
+				<h4 data-i18n="about.supported_by">Supported by</h4>
 				<a class="about-supporter" href="http://ida.dk/">
 					<img src="images/IDA_Viden_der_styrker_Tall_black_RGB_12mm-SOENDERJYLLAND-tra.png">
 				</a>
@@ -85,27 +120,28 @@
 		</section>
 		<section class="about-page frame">
 			<img class="about-posters one-half" src="images/thumb_IMG_8663.JPG">
-			<h2>Projects which have been taking place:</h2>
+			<h2 data-i18n="about.projects_title">Projects which have been taking place:</h2>
 			<ul class="about-project one-half">
-				<li>Experiments with electronics waste –
+				<li data-i18n="about.project1">Experiments with electronics waste –
 					<em>how to make a small energy harvester for LED-lamps</em>
 				</li>
-				<li>Green-Power-Hack -
+				<li data-i18n="about.project2">Green-Power-Hack -
 					<em>How to make an old electrical drill into an powerful energy harvester
 						to get power for other wireless projects</em>
 				</li>
-				<li>Get your old Golf car back on the road –
+				<li data-i18n="about.project3">Get your old Golf car back on the road –
 					<em>fix it green to last a bit longer</em>
 				</li>
-				<li>Up-cycling waste into new artful things</li>
+				<li data-i18n="about.project4">Up-cycling waste into new artful things</li>
 				<ul>
-					<li>Water bottles into wonderful furniture</li>
-					<li>Water bottles into sun hot-air heaters for cloth dryers</li>
-					<li>Beer cans into sun-hot-water-heaters for bath water</li>
+					<li data-i18n="about.project4_sub1">Water bottles into wonderful furniture</li>
+					<li data-i18n="about.project4_sub2">Water bottles into sun hot-air heaters for cloth dryers</li>
+					<li data-i18n="about.project4_sub3">Beer cans into sun-hot-water-heaters for bath water</li>
 				</ul>
 			</ul>
 		</section>
 	</main>
+	<script src="js/i18n.js"></script>
 	<!--
 		<script src="js/vendor/jquery-3.7.1.min.js"></script>
 		<script src="js/plugins.js"></script>

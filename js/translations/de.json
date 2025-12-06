@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "about": "Über Uns",
+    "calculator": "Rechner",
+    "gallery": "Galerie",
+    "become_member": "Mitglied werden"
+  },
+  "home": {
+    "title": "Green Makerspace",
+    "subtitle": "Die Werkstatt für alle, die kommen und Dinge machen wollen.",
+    "description1": "Wir sind der Ort, an dem Sie als Erfinder, Unternehmer, Hobbyist oder Student kommen und an Projekten arbeiten können, die Spaß machen, grün und innovativ sind.",
+    "description2": "Im Green Makerspace können Sie Ihre Ideen materialisieren und in einer inspirierenden Umgebung mit vielen verschiedenen Fachleuten und Kreativen lernen.",
+    "calendar_header": "Wir haben geöffnet",
+    "calendar_next": "nächsten Samstag",
+    "calendar_from": "von",
+    "calendar_to": "bis",
+    "calendar_info": "Normalerweise jeden Samstag 10:00-14:00<br/>und Dienstag 18:00-21:00 geöffnet"
+  },
+  "about": {
+    "title": "Über Uns",
+    "emergence_title": "Wie entstand der Green Makerspace?",
+    "emergence_p1": "Anfang 2013 beantragte die Freiwilligenorganisation Vedvarende Energi in Sønderborg beim Umweltministerium Förderung für Grüne Enthusiasten zur Einrichtung einer Werkstatt. Der Antrag wurde genehmigt und die notwendige Finanzierung für die Einrichtung bereitgestellt:",
+    "emergence_quote": "Die experimentelle und inspirierende Klima- und Umweltwerkstatt",
+    "emergence_p2": "Die lokale Unternehmerfabrik iFabrikken erwies sich als idealer Standort für die Werkstatt. Um ihren lokalen Mitgliedern zu nutzen und das Umfeld für verschiedene Fachkräfte in Sønderborg zu verbessern, schloss sich IDA Sønderjylland (Die Dänische Ingenieurgesellschaft) zur Unterstützung an.",
+    "emergence_p3": "Der nächste Schritt war die Gründung des Green Makerspace Support Vereins, wo Freiwillige an der Wartung, Entwicklung und Nachhaltigkeit der Green Makerspace Werkstatt arbeiten.",
+    "emergence_p4": "Green Makerspace hatte das Vergnügen, viele verschiedene Sponsoren und Freiwillige in Bezug auf Zeit, Materialien und Ausrüstung zu haben. Wir sind stolz und dankbar für all die Unterstützung und wir sehen eine grüne Zukunft voraus.",
+    "supported_by": "Unterstützt von",
+    "projects_title": "Projekte, die stattgefunden haben:",
+    "project1": "Experimente mit Elektronikschrott – wie man einen kleinen Energiesammler für LED-Lampen herstellt",
+    "project2": "Green-Power-Hack - Wie man aus einer alten elektrischen Bohrmaschine einen leistungsstarken Energiesammler macht, um Strom für andere drahtlose Projekte zu bekommen",
+    "project3": "Bringen Sie Ihr altes Golfauto wieder auf die Straße – reparieren Sie es grün, damit es etwas länger hält",
+    "project4": "Upcycling von Abfall zu neuen kunstvollen Dingen",
+    "project4_sub1": "Wasserflaschen zu wunderbaren Möbeln",
+    "project4_sub2": "Wasserflasken zu Sonnen-Heißluft-Heizungen für Wäschetrockner",
+    "project4_sub3": "Bierdosen zu Sonnen-Warmwasser-Heizungen für Badewasser"
+  },
+  "calculator": {
+    "title": "Green Makerspace Wissenschaftlicher Rechner",
+    "basic": "Grundlegend",
+    "scientific": "Wissenschaftlich",
+    "angle_mode": "Winkel Modus"
+  },
+  "gallery": {
+    "title": "Projekt Galerie",
+    "description": "Erkunden Sie unsere Sammlung innovativer Projekte, Workshops und kreativer Bemühungen aus der Green Makerspace Gemeinschaft. Von nachhaltiger Technologie bis hin zu künstlerischen Kreationen, sehen Sie, was unsere Maker gebaut haben.",
+    "loading": "Lade Galerie-Bilder...",
+    "no_images_title": "Galerie Kommt Bald!",
+    "no_images_text": "Wir richten gerade unsere Projektgalerie ein. Schauen Sie bald wieder vorbei, um erstaunliche Projekte aus unserer Green Makerspace Gemeinschaft zu sehen.",
+    "admin_info": "Für Administratoren: Fügen Sie Bilder zum /gallery/ Ordner hinzu, um diese Galerie automatisch zu füllen. Unterstützte Formate: JPG, PNG, GIF, WebP"
+  },
+  "become_member": {
+    "title": "Mitglied werden und Zugang zum Makerspace erhalten"
+  }
+}

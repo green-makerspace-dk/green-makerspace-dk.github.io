@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "about": "About Us",
+    "calculator": "Calculator",
+    "gallery": "Gallery",
+    "become_member": "Become a member"
+  },
+  "home": {
+    "title": "Green Makerspace",
+    "subtitle": "The Workshop for everyone to come and make things.",
+    "description1": "We are the place where you, as an inventor, entrepreneur, hobbyist or student can come and work on projects that are fun, green and innovative.",
+    "description2": "At the Green Makerspace you can materialize your ideas and learn in an inspiring environment with many different professionals and creatives.",
+    "calendar_header": "We will be open",
+    "calendar_next": "next Saturday",
+    "calendar_from": "from",
+    "calendar_to": "to",
+    "calendar_info": "Usually open every Saturday 10:00-14:00<br/>and Tuesday 18:00-21:00"
+  },
+  "about": {
+    "title": "About Us",
+    "emergence_title": "How did the Green Makerspace emerge?",
+    "emergence_p1": "In early 2013 the voluntary organization Vedvarende Energi in Sønderborg applied to Ministry of the Environment for funding for Green Enthusiasts to create a workshop. The application was approved and necessary funding provided for setting up:",
+    "emergence_quote": "The experimental and inspiring Climate and Environment Workshop",
+    "emergence_p2": "Local entrepreneur factory iFabrikken emerged as the ideal location to accommodate the workshop. In order to benefit its local members and improve the environment for various professionals in Sønderborg, IDA Sønderjylland (The Danish Society of Engineers) joined to support.",
+    "emergence_p3": "The next step was the foundation of the Green Makerspace Support Association, where volunteers work on the maintenance, development and sustainability of the Green Makerspace workshop.",
+    "emergence_p4": "Green Makerspace has had the pleasure to have many different sponsors and volunteers in terms of time, materials and equipment. We are proud and grateful for all the support and we foresee a green future.",
+    "supported_by": "Supported by",
+    "projects_title": "Projects which have been taking place:",
+    "project1": "Experiments with electronics waste – how to make a small energy harvester for LED-lamps",
+    "project2": "Green-Power-Hack - How to make an old electrical drill into an powerful energy harvester to get power for other wireless projects",
+    "project3": "Get your old Golf car back on the road – fix it green to last a bit longer",
+    "project4": "Up-cycling waste into new artful things",
+    "project4_sub1": "Water bottles into wonderful furniture",
+    "project4_sub2": "Water bottles into sun hot-air heaters for cloth dryers",
+    "project4_sub3": "Beer cans into sun-hot-water-heaters for bath water"
+  },
+  "calculator": {
+    "title": "Green Makerspace Scientific Calculator",
+    "basic": "Basic",
+    "scientific": "Scientific",
+    "angle_mode": "Angle Mode"
+  },
+  "gallery": {
+    "title": "Project Gallery",
+    "description": "Explore our collection of innovative projects, workshops, and creative endeavors from the Green Makerspace community. From sustainable technology to artistic creations, see what our makers have been building.",
+    "loading": "Loading gallery images...",
+    "no_images_title": "Gallery Coming Soon!",
+    "no_images_text": "We're currently setting up our project gallery. Check back soon to see amazing projects from our Green Makerspace community.",
+    "admin_info": "For administrators: Add images to the /gallery/ folder to populate this gallery automatically. Supported formats: JPG, PNG, GIF, WebP"
+  },
+  "become_member": {
+    "title": "Become a member and gain access to the Makerspace"
+  }
+}
