@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-06T11:34:48.159Z",
+  "lastUpdated": "2025-12-06T11:38:57.141Z",
   "totalImages": 7,
   "images": [
     {
@@ -7,40 +7,40 @@
       "title": "Workshop Green Technology",
       "description": "Green Makerspace project",
       "filename": "workshop-green-technology.png",
-      "dateAdded": "2025-12-06T11:34:48.154Z",
+      "dateAdded": "2025-12-06T11:38:57.140Z",
       "width": 400,
       "height": 267,
       "format": "png",
       "size": 204995
     },
     {
-      "src": "gallery/thumb_IMG_8663.JPG",
-      "title": "Thumb IMG 8663",
-      "description": "Green Makerspace project",
-      "filename": "thumb_IMG_8663.JPG",
-      "dateAdded": "2025-12-06T11:34:48.150Z",
-      "width": 400,
-      "height": 267,
-      "format": "jpeg",
-      "size": 77296
-    },
-    {
       "src": "gallery/thumb_IMG_8613.JPG",
       "title": "Thumb IMG 8613",
       "description": "Green Makerspace project",
       "filename": "thumb_IMG_8613.JPG",
-      "dateAdded": "2025-12-06T11:34:48.144Z",
+      "dateAdded": "2025-12-06T11:38:57.139Z",
       "width": 400,
       "height": 267,
       "format": "jpeg",
       "size": 82916
     },
     {
+      "src": "gallery/thumb_IMG_8663.JPG",
+      "title": "Thumb IMG 8663",
+      "description": "Green Makerspace project",
+      "filename": "thumb_IMG_8663.JPG",
+      "dateAdded": "2025-12-06T11:38:57.139Z",
+      "width": 400,
+      "height": 267,
+      "format": "jpeg",
+      "size": 77296
+    },
+    {
       "src": "gallery/thumb_IMG_8611.JPG",
       "title": "Thumb IMG 8611",
       "description": "Green Makerspace project",
       "filename": "thumb_IMG_8611.JPG",
-      "dateAdded": "2025-12-06T11:34:48.140Z",
+      "dateAdded": "2025-12-06T11:38:57.138Z",
       "width": 400,
       "height": 267,
       "format": "jpeg",
@@ -51,33 +51,33 @@
       "title": "Thumb IMG 8607",
       "description": "Green Makerspace project",
       "filename": "thumb_IMG_8607.JPG",
-      "dateAdded": "2025-12-06T11:34:48.137Z",
+      "dateAdded": "2025-12-06T11:38:57.137Z",
       "width": 400,
       "height": 267,
       "format": "jpeg",
       "size": 45457
     },
     {
-      "src": "gallery/DSC02422-thumb.png",
-      "title": "DSC02422 Thumb",
-      "description": "Green Makerspace project",
-      "filename": "DSC02422-thumb.png",
-      "dateAdded": "2025-12-06T11:34:48.134Z",
-      "width": 400,
-      "height": 267,
-      "format": "png",
-      "size": 204995
-    },
-    {
       "src": "gallery/community-workshop-session.jpg",
       "title": "Community Workshop Session",
       "description": "Green Makerspace project",
       "filename": "community-workshop-session.jpg",
-      "dateAdded": "2025-12-06T11:34:48.124Z",
+      "dateAdded": "2025-12-06T11:38:57.136Z",
       "width": 400,
       "height": 267,
       "format": "jpeg",
       "size": 67043
+    },
+    {
+      "src": "gallery/DSC02422-thumb.png",
+      "title": "DSC02422 Thumb",
+      "description": "Green Makerspace project",
+      "filename": "DSC02422-thumb.png",
+      "dateAdded": "2025-12-06T11:38:57.135Z",
+      "width": 400,
+      "height": 267,
+      "format": "png",
+      "size": 204995
     }
   ]
 }
