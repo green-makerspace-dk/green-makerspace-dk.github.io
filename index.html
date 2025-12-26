@@ -14,12 +14,13 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link href="css/css.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/main.css">
+	<!-- Leaflet CSS for OpenStreetMap -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 	<style>
 		.language-selector {
 			display: flex;
 			gap: 5px;
 			align-items: center;
-			margin-left: 15px;
 		}
 		.lang-btn {
 			background: none;
@@ -42,6 +43,125 @@
 		.main-nav {
 			display: flex;
 			align-items: center;
+		}
+
+		/* Location Map Section */
+		.location-section {
+			margin-top: 3em;
+			margin-bottom: 1em;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+			overflow: hidden;
+		}
+
+		.location-header {
+			background: linear-gradient(135deg, #79c843, #6ebb37);
+			color: white;
+			padding: 1.2em 2em;
+			text-align: center;
+		}
+
+		.location-header h3 {
+			margin: 0;
+			font-size: 1.5em;
+			font-weight: 600;
+			font-style: normal;
+			color: white;
+		}
+
+		.location-header h3:before,
+		.location-header h3:after {
+			display: none;
+		}
+
+		.location-content {
+			display: block;
+		}
+
+		.location-info {
+			padding: 1em 2em;
+			background: #fafafa;
+			text-align: center;
+		}
+
+		.location-info h4 {
+			color: #2c3e50;
+			margin-bottom: 0.8em;
+			font-size: 1.2em;
+		}
+
+		.location-info p {
+			color: #566473;
+			line-height: 1.8;
+			margin-bottom: 1em;
+		}
+
+		.address-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 1em;
+			margin-top: 1.5em;
+		}
+
+		.location-info .address {
+			font-style: italic;
+			border-left: 3px solid #79c843;
+			padding-left: 1em;
+			margin: 0;
+			text-align: left;
+		}
+
+		.location-info .directions-btn {
+			display: inline-block;
+			background: #79c843;
+			color: white;
+			padding: 0.7em 1.5em;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.2s;
+		}
+
+		.location-info .directions-btn:hover {
+			background: #6ebb37;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(121, 200, 67, 0.3);
+		}
+
+		#map {
+			display: block;
+			width: 100%;
+			height: 350px;
+			z-index: 1;
+		}
+
+		@media screen and (max-width: 768px) {
+			#map {
+				height: 280px;
+			}
+
+			.location-info {
+				text-align: center;
+			}
+
+			.address-row {
+				flex-direction: row;
+				align-items: center;
+			}
+
+			.location-info .address {
+				border-left: none;
+				border-top: 3px solid #79c843;
+				padding-left: 0;
+				padding-top: 1em;
+			}
+
+			.location-info .directions-btn {
+				margin-top: 0.5em;
+			}
 		}
 	</style>
 
@@ -75,12 +195,12 @@
 		<section class="title-copy frame">
 			<h4 class="title-preheader"><span data-i18n="home.title">Green Makerspace</span> - Sonderborg is:</h4>
 			<h1 data-i18n-html="home.subtitle">The Workshop <strong>for everyone</strong> to come and make things.</h1>
-			<article class="one-half">
+			<article class="one-half description-text">
 				<p data-i18n="home.description1">
 					We are the place where you, as an inventor, entrepreneur,
 					hobbyist or student can come and work on projects that are fun, green
 					and innovative.
-				</p>
+				</p><br />
 				<p data-i18n-html="home.description2">
 					At the <strong>Green Makerspace</strong> you can materialize your ideas
 					and learn in an inspiring environment with many different
@@ -106,7 +226,51 @@
 			<img src="images/thumb_IMG_8613.JPG">
 			<img src="images/DSC02422-thumb.png">
 		</section>
+
+		<section class="location-section">
+			<div class="location-header">
+				<h3 data-i18n="home.location_title">📍 Find Us</h3>
+			</div>
+			<div class="location-content">
+				<div class="location-info">
+					<h4 data-i18n="home.location_heading">Visit Green Makerspace</h4>
+					<p data-i18n="home.location_description">
+						We're located in the northern part of Sønderborg, near Burger King.
+					</p>
+					<div id="map"></div>
+					<div class="address-row">
+						<div class="address">
+							<strong>Green Makerspace</strong><br>
+							Vestermark 7B<br>
+							6400 Sønderborg<br>
+							Denmark
+						</div>
+						<a href="https://www.openstreetmap.org/?mlat=54.9132&mlon=9.7928#map=19/54.926417/9.780898" 
+						   target="_blank" 
+						   rel="noopener noreferrer" 
+						   class="directions-btn"
+						   data-i18n="home.get_directions">Get Directions →</a>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
+	<!-- Leaflet JS for OpenStreetMap -->
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script>
+		// Initialize the map
+		const map = L.map('map').setView([54.926417, 9.780898], 17);
+
+		// Add OpenStreetMap tiles
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+
+		// Add a marker for Green Makerspace
+		const marker = L.marker([54.926417, 9.780898]).addTo(map);
+		marker.bindPopup('<strong>Green Makerspace</strong><br>Vestermark 7B<br>6400 Sønderborg').openPopup();
+	</script>
 	<script src="js/i18n.js"></script>
 	<!--
 		<script src="js/vendor/jquery-3.7.1.min.js"></script>

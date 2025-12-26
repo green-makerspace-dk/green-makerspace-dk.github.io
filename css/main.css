@@ -232,13 +232,23 @@ tr.expired td:first-child {
 
 .one-half {
   float: left;
-  width: 50%; }
-  @media screen and (max-width: 50em) {
-    .one-half {
-      width: 100%; } }
+  width: 50%; 
+}
 
-.one-half:last-child {
-  float: right; }
+.description-text {
+  padding-right: 2em;
+  text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+  .description-text {
+    width: 90%;
+    margin: 0 auto;
+    float: none;
+    text-align: justify;
+    padding-right: 0;
+  } 
+}
 
 .frame:after {
   content: "";
@@ -302,11 +312,21 @@ tr.expired td:first-child {
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    height: 80px;
+    flex-direction: row;
+    gap: 1rem;
+    height: auto;
+    padding: 0.5rem 0 0.75rem 0;
 }
 
+@media (max-width: 1000px) {
+    .header-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: start;
+        align-items: center;
+    }
+}
 .header-logo-link {
     display: flex;
     align-items: center;
@@ -331,7 +351,17 @@ tr.expired td:first-child {
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+
+    .main-nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 .nav-link {
@@ -343,15 +373,15 @@ tr.expired td:first-child {
     letter-spacing: 0.5px;
     transition: color 0.2s;
     position: relative;
+    text-align: center;
+    min-width: content-fit;
+    white-space: nowrap;
 }
 
 .nav-link:not(.btn-cta):after {
-    content: '';
-    position: absolute;
-    width: 0;
+    position: relative;
     height: 2px;
     bottom: -4px;
-    left: 0;
     background-color: #79c843;
     transition: width 0.3s;
 }
@@ -367,7 +397,7 @@ tr.expired td:first-child {
 .btn-cta {
     background-color: #79c843;
     color: white !important;
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 4px;
     transition: all 0.2s;
     box-shadow: 0 2px 5px rgba(121, 200, 67, 0.3);
@@ -379,29 +409,21 @@ tr.expired td:first-child {
     box-shadow: 0 4px 8px rgba(121, 200, 67, 0.4);
 }
 
-@media (max-width: 768px) {
-    .header-container {
-        padding: 0 1rem;
-        height: auto;
-        flex-direction: column;
-        padding-bottom: 1rem;
-    }
-    
-    .header-logo-link {
-        margin-bottom: 1rem;
-        margin-top: 0.5rem;
-    }
 
-    .main-nav {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
 
 .calendar-open, .calendar-closed {
   text-align: center;
-  padding-left: 3em; }
+}
+
+@media (max-width: 768px) {
+  .calendar-open, .calendar-closed {
+    padding: 1em 0 0 0;
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    float: none;
+  }
+}
 
 .calendar-open header, .calendar-closed header {
   background-color: #ec503b;
@@ -488,28 +510,43 @@ body {
 
 main {
   max-width: 1000px;
-  padding: 2em;
+  padding: 0.5em 2em;
   background-color: rgba(241, 244, 245, 0.95);
-  margin: 0 auto; }
-  @media screen and (max-width: 68.750em) {
-    main {
-      padding: 2em 1em; } }
+  margin: 0 auto; 
+}
+
 
 .title-copy h4 {
   color: #566473;
   text-align: center;
-  margin: 2em 0 0 0;
+  margin: 1.25em 0 0 0;
   font-weight: normal; }
 
 .title-copy h1 {
   text-align: center;
-  margin: -0.2em 0 1.6em 0; }
+  margin: 0em 0 1em 0; 
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0.1em 1em; 
+  }
+
+  .title-copy h4 {
+    margin: 1em 0 0 0;
+  }
+
+  .title-copy h1 {
+    margin: 0em 0 0.5em 0; 
+  }
+}
 
 .title-copy p {
   font-size: 1.05em; }
 
 .title-images, .title-map {
-  margin-top: 4em; }
+  margin-top: 2em; 
+}
 
 .title-images img {
   width: 33.3%;

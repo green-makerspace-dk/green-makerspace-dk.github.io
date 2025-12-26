@@ -14,7 +14,11 @@
     "calendar_next": "næste lørdag",
     "calendar_from": "fra",
     "calendar_to": "til",
-    "calendar_info": "Normalt åbent hver lørdag 10:00-14:00<br/>og tirsdag 18:00-21:00"
+    "calendar_info": "Normalt åbent hver lørdag 10:00-14:00<br/>og tirsdag 18:00-21:00",
+    "location_title": "📍 Find Os",
+    "location_heading": "Besøg Green Makerspace",
+    "location_description": "Vi ligger i den nordlige del af Sønderborg, tæt på Burger King.",
+    "get_directions": "Få Vejvisning →"
   },
   "about": {
     "title": "Om Os",

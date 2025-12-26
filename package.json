@@ -20,7 +20,7 @@
   "author": "Green Makerspace",
   "license": "MIT",
   "devDependencies": {
-    "fs-extra": "^11.3.2",
+    "fs-extra": "^11.3.3",
     "sharp": "^0.32.6"
   }
 }

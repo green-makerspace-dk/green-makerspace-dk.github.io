@@ -234,6 +234,16 @@
 			text-align: center;
 			color: #62a731;
 			margin-bottom: 1em;
+			margin-top: 0;
+		}
+
+		.calculator-page {
+			max-width: 600px;
+			margin: 2em auto;
+			padding: 2em;
+			background-color: #fff;
+			border-radius: 12px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 		}
 
 		/* Scientific button visibility and styling */
@@ -367,6 +377,9 @@
 				</div>
 			</nav>
 		</div>
+	</header>
+
+	<main class="calculator-page">
 		<h2 class="calculator-title" data-i18n="calculator.title">Green Makerspace Scientific Calculator</h2>
 		<div class="calculator-container" id="calculator">
 			<div class="mode-toggle">
@@ -432,8 +445,7 @@
 				<button class="calc-btn scientific scientific-row" onclick="appendToDisplay(')')">)</button>
 			</div>
 		</div>
-		</section>
-		</main>
+	</main>
 
 		<script>
 			// Configure Decimal.js for 32-digit precision
