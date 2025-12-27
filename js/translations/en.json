@@ -9,7 +9,7 @@
     "title": "Green Makerspace",
     "subtitle": "The Workshop for everyone to come and make things.",
     "description1": "We are the place where you, as an inventor, entrepreneur, hobbyist or student can come and work on projects that are fun, green and innovative.",
-    "description2": "At the Green Makerspace you can materialize your ideas and learn in an inspiring environment with many different professionals and creatives.",
+    "description2": "At the <strong>Green Makerspace</strong> you can materialize your ideas and learn in an inspiring environment with many different professionals and creatives.",
     "calendar_header": "We will be open",
     "calendar_next": "next Saturday",
     "calendar_from": "from",
@@ -18,7 +18,15 @@
     "location_title": "📍 Find Us",
     "location_heading": "Visit Green Makerspace",
     "location_description": "We're located in the northern part of Sønderborg, near Burger King.",
-    "get_directions": "Get Directions →"
+    "get_directions": "Get Directions →",
+    "workshops_title": "What We Offer",
+    "workshop_wood": "Wood",
+    "workshop_metal": "Metal",
+    "workshop_laser": "Laser",
+    "workshop_cnc": "CNC",
+    "workshop_printer": "3D Print",
+    "workshop_fabrics": "Fabrics",
+    "workshop_bbq": "BBQ"
   },
   "about": {
     "title": "About Us",

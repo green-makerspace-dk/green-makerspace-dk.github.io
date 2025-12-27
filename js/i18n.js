@@ -117,7 +117,7 @@ class I18n {
      * Translate the current page
      */
     translatePage() {
-        // Translate elements with data-i18n attribute
+        // Translate elements with data-i18n attribute (text content)
         const elements = document.querySelectorAll('[data-i18n]');
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
@@ -125,11 +125,17 @@ class I18n {
             
             if (element.tagName === 'INPUT' && element.type === 'submit') {
                 element.value = translation;
-            } else if (element.hasAttribute('data-i18n-html')) {
-                element.innerHTML = translation;
             } else {
                 element.textContent = translation;
             }
+        });
+
+        // Translate elements with data-i18n-html attribute (HTML content)
+        const htmlElements = document.querySelectorAll('[data-i18n-html]');
+        htmlElements.forEach(element => {
+            const key = element.getAttribute('data-i18n-html');
+            const translation = this.t(key);
+            element.innerHTML = translation;
         });
 
         // Translate placeholder attributes

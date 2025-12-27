@@ -435,7 +435,7 @@ tr.expired td:first-child {
 .calendar-date {
   background-color: #fafafa;
   text-align: center;
-  padding-top: 1em;
+  padding-top: 0.5em;
   font-size: 1.8em; }
 
 .calendar-closed header {
@@ -458,7 +458,7 @@ tr.expired td:first-child {
   color: #616060;
   font-size: 0.5em;
   padding: 0.1em 0;
-  margin-top: 2em; }
+  margin-top: 1em; }
 
 *, *:after, *:before {
   margin: 0;
