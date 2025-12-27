@@ -45,6 +45,122 @@
 			align-items: center;
 		}
 
+		/* Intro Row - Description and Calendar side by side */
+		.intro-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1em;
+			align-items: center;
+		}
+
+		.intro-row .description-text {
+			flex: 1;
+		}
+
+		.intro-row .calendar-closed {
+			flex: 0 0 auto;
+			width: calc((100% / 10) * 4);
+			padding-left: 0;
+		}
+
+		/* Mobile/Desktop visibility helpers */
+		.mobile-only {
+			display: none;
+		}
+
+		.desktop-only {
+			display: block;
+		}
+
+		@media screen and (max-width: 768px) {
+			.intro-row {
+				flex-direction: column;
+			}
+
+			.intro-row .calendar-closed {
+				width: 90%;
+			}
+
+			.mobile-only {
+				display: block;
+			}
+
+			.desktop-only {
+				display: none;
+			}
+		}
+
+		/* Workshops Section */
+		.workshops-section {
+			width: 100%;
+			padding: 0 0 0 0;
+			text-align: center;
+		}
+
+		.workshops-section h4 {
+			color: #62a731;
+			font-size: 1.3em;
+			margin-bottom: 1em;
+			font-weight: 600;
+		}
+
+		.workshops-grid {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1.5em;
+		}
+
+		.workshop-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 1em;
+			background: #fff;
+			border-radius: 10px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+			transition: all 0.2s ease;
+			min-width: 90px;
+		}
+
+		.workshop-item:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 6px 16px rgba(121, 200, 67, 0.25);
+		}
+
+		.workshop-item img {
+			width: 75px;
+			height: 75px;
+			object-fit: contain;
+			margin-bottom: 0.5em;
+		}
+
+		.workshop-item span {
+			font-size: 0.9em;
+			font-weight: 600;
+			color: #2c3e50;
+		}
+
+		@media screen and (max-width: 768px) {
+			.workshops-grid {
+				gap: 1em;
+			}
+
+			.workshop-item {
+				padding: 0.8em;
+				min-width: 75px;
+			}
+
+			.workshop-item img {
+				width: 56px;
+				height: 56px;
+			}
+
+			.workshop-item span {
+				font-size: 0.8em;
+			}
+		}
+
 		/* Location Map Section */
 		.location-section {
 			margin-top: 3em;
@@ -195,19 +311,53 @@
 		<section class="title-copy frame">
 			<h4 class="title-preheader"><span data-i18n="home.title">Green Makerspace</span> - Sonderborg is:</h4>
 			<h1 data-i18n-html="home.subtitle">The Workshop <strong>for everyone</strong> to come and make things.</h1>
-			<article class="one-half description-text">
-				<p data-i18n="home.description1">
-					We are the place where you, as an inventor, entrepreneur,
-					hobbyist or student can come and work on projects that are fun, green
-					and innovative.
-				</p><br />
-				<p data-i18n-html="home.description2">
-					At the <strong>Green Makerspace</strong> you can materialize your ideas
-					and learn in an inspiring environment with many different
-					professionals and creatives.
-				</p>
-			</article>
-			<div class="one-half calendar-closed">
+			<div class="intro-row">
+				<article class="description-text">
+					<p data-i18n="home.description1">
+						We are the place where you, as an inventor, entrepreneur,
+						hobbyist or student can come and work on projects that are fun, green
+						and innovative.
+					</p><br />
+					<p data-i18n-html="home.description2">
+						At the <strong>Green Makerspace</strong> you can materialize your ideas
+						and learn in an inspiring environment with many different
+						professionals and creatives.
+					</p>
+				</article>
+				<div class="workshops-section mobile-only">
+					<h4 data-i18n="home.workshops_title">What We Offer</h4>
+					<div class="workshops-grid">
+						<div class="workshop-item">
+							<img src="images/workshops/wood.png" alt="Wood Workshop">
+							<span data-i18n="home.workshop_wood">Wood</span>
+						</div>
+						<div class="workshop-item">
+							<img src="images/workshops/metal.png" alt="Metal Workshop">
+							<span data-i18n="home.workshop_metal">Metal</span>
+						</div>
+						<div class="workshop-item">
+							<img src="images/workshops/laser.png" alt="Laser Cutting">
+							<span data-i18n="home.workshop_laser">Laser</span>
+						</div>
+						<div class="workshop-item">
+							<img src="images/workshops/cnc.png" alt="CNC Machine">
+							<span data-i18n="home.workshop_cnc">CNC</span>
+						</div>
+						<div class="workshop-item">
+							<img src="images/workshops/printer.png" alt="3D Printing">
+							<span data-i18n="home.workshop_printer">3D Print</span>
+						</div>
+						<div class="workshop-item">
+							<img src="images/workshops/fabrics.png" alt="Fabrics & Textiles">
+							<span data-i18n="home.workshop_fabrics">Fabrics</span>
+						</div>
+						<div class="workshop-item">
+							<img src="images/workshops/bbq.png" alt="BBQ & Social">
+							<span data-i18n="home.workshop_bbq">BBQ</span>
+						</div>
+					</div>
+				</div>
+				<div class="calendar-closed">
 				<header data-i18n="home.calendar_header"> We will be open </header>
 				<section class="calendar-date">
 					<span data-i18n="home.calendar_next">next Saturday</span>
@@ -219,6 +369,40 @@
 						<br />and Tuesday 18:00-21:00
 					</div>
 				</section>
+				</div>
+			</div>
+			<div class="workshops-section desktop-only">
+				<h4 data-i18n="home.workshops_title">What We Offer</h4>
+				<div class="workshops-grid">
+					<div class="workshop-item">
+						<img src="images/workshops/wood.png" alt="Wood Workshop">
+						<span data-i18n="home.workshop_wood">Wood</span>
+					</div>
+					<div class="workshop-item">
+						<img src="images/workshops/metal.png" alt="Metal Workshop">
+						<span data-i18n="home.workshop_metal">Metal</span>
+					</div>
+					<div class="workshop-item">
+						<img src="images/workshops/laser.png" alt="Laser Cutting">
+						<span data-i18n="home.workshop_laser">Laser</span>
+					</div>
+					<div class="workshop-item">
+						<img src="images/workshops/cnc.png" alt="CNC Machine">
+						<span data-i18n="home.workshop_cnc">CNC</span>
+					</div>
+					<div class="workshop-item">
+						<img src="images/workshops/printer.png" alt="3D Printing">
+						<span data-i18n="home.workshop_printer">3D Print</span>
+					</div>
+					<div class="workshop-item">
+						<img src="images/workshops/fabrics.png" alt="Fabrics & Textiles">
+						<span data-i18n="home.workshop_fabrics">Fabrics</span>
+					</div>
+					<div class="workshop-item">
+						<img src="images/workshops/bbq.png" alt="BBQ & Social">
+						<span data-i18n="home.workshop_bbq">BBQ</span>
+					</div>
+				</div>
 			</div>
 		</section>
 		<section class="title-images frame">
@@ -272,11 +456,6 @@
 		marker.bindPopup('<strong>Green Makerspace</strong><br>Vestermark 7B<br>6400 Sønderborg').openPopup();
 	</script>
 	<script src="js/i18n.js"></script>
-	<!--
-		<script src="js/vendor/jquery-3.7.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/main.js"></script>
--->
 </body>
 
 </html>
